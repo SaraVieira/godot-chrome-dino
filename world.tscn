@@ -1395,25 +1395,25 @@ format = 2
 layer_0/tile_data = PackedInt32Array(458752, 524288, 4, 458753, 524288, 4, 458754, 524288, 4, 458755, 524288, 4, 458756, 524288, 4, 458757, 524288, 4, 458758, 524288, 4, 458759, 524288, 4, 458760, 524288, 4, 458761, 524288, 4, 458762, 524288, 4, 458763, 524288, 4, 458764, 524288, 4, 458765, 524288, 4)
 
 [node name="EnemySky" parent="ParallaxBackground/ParallaxLayer" instance=ExtResource("9_bqcho")]
-position = Vector2(194, 87)
+position = Vector2(194, 90)
 
 [node name="Enemy" parent="ParallaxBackground/ParallaxLayer" instance=ExtResource("5_o5kol")]
 position = Vector2(134, 99)
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
+[node name="Ground" type="StaticBody2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
 position = Vector2(112, 121)
 shape = SubResource("RectangleShape2D_maiy5")
 
-[node name="Control" type="Control" parent="."]
+[node name="UI" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 224.0
 offset_bottom = 129.0
 size_flags_horizontal = 0
 
-[node name="Label" type="Label" parent="Control"]
+[node name="Label" type="Label" parent="UI"]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -1425,7 +1425,7 @@ label_settings = SubResource("LabelSettings_j60a3")
 horizontal_alignment = 2
 script = ExtResource("6_uaihj")
 
-[node name="Timer" type="Timer" parent="Control/Label"]
+[node name="Timer" type="Timer" parent="UI/Label"]
 autostart = true
 
 [node name="Game Over" parent="." instance=ExtResource("7_c7pwd")]
@@ -1441,5 +1441,5 @@ autoplay = true
 stream = ExtResource("11_d7cf2")
 volume_db = -8.901
 
-[connection signal="timeout" from="Control/Label/Timer" to="Player" method="_on_timer_timeout"]
-[connection signal="timeout" from="Control/Label/Timer" to="Control/Label" method="_on_timer_timeout"]
+[connection signal="timeout" from="UI/Label/Timer" to="Player" method="_on_timer_timeout"]
+[connection signal="timeout" from="UI/Label/Timer" to="UI/Label" method="_on_timer_timeout"]

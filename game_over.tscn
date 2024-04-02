@@ -1,13 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://cc55gi2rohbed"]
+[gd_scene load_steps=6 format=3 uid="uid://cc55gi2rohbed"]
 
 [ext_resource type="FontFile" uid="uid://dyv6pyat6m6q2" path="res://assets/m3x6.ttf" id="1_5p870"]
 [ext_resource type="Script" path="res://scripts/SocreLabelGameOver.gd" id="1_blwx5"]
 [ext_resource type="Script" path="res://scripts/GameOverReload.gd" id="1_ny7vl"]
+[ext_resource type="Script" path="res://scripts/game_over_screen.gd" id="1_rmj5p"]
 [ext_resource type="Script" path="res://scripts/HighScore.gd" id="3_1bvea"]
 
 [node name="Game Over" type="Control"]
 layout_mode = 3
 anchors_preset = 0
+script = ExtResource("1_rmj5p")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 0

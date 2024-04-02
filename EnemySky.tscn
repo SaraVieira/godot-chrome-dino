@@ -1,0 +1,49 @@
+[gd_scene load_steps=7 format=3 uid="uid://cxyv0arfj4hrr"]
+
+[ext_resource type="Script" path="res://enemy.gd" id="1_dgxm5"]
+[ext_resource type="Texture2D" uid="uid://dy5x1dwhb85hm" path="res://assets/crouch/enemy_fly/1.png" id="2_i4bvy"]
+[ext_resource type="Texture2D" uid="uid://cjn4im3scdl2" path="res://assets/crouch/enemy_fly/2.png" id="3_vj4kj"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_h24ld"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_i4bvy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_vj4kj")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mj24d"]
+size = Vector2(5.01507, 3.86259)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d0qyk"]
+size = Vector2(10, 143.333)
+
+[node name="CharacterBody" type="Area2D"]
+scale = Vector2(1.8, 1.8)
+script = ExtResource("1_dgxm5")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -2.22223)
+sprite_frames = SubResource("SpriteFrames_h24ld")
+autoplay = "default"
+
+[node name="CollisionShape" type="CollisionShape2D" parent="."]
+position = Vector2(0.0908944, -0.322611)
+rotation = 3.14159
+scale = Vector2(2.03024, 2.70955)
+shape = SubResource("RectangleShape2D_mj24d")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-6.62274e-08, -66.6666)
+shape = SubResource("RectangleShape2D_d0qyk")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

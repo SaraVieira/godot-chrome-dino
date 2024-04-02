@@ -1,0 +1,73 @@
+[gd_scene load_steps=5 format=3 uid="uid://cc55gi2rohbed"]
+
+[ext_resource type="Script" path="res://SocreLabelGameOver.gd" id="1_blwx5"]
+[ext_resource type="FontFile" uid="uid://c52yk4nyruk1h" path="res://assets/Press_Start_2P/PressStart2P-Regular.ttf" id="1_mq0qd"]
+[ext_resource type="Script" path="res://Button.gd" id="1_ny7vl"]
+[ext_resource type="Script" path="res://HighScore.gd" id="3_1bvea"]
+
+[node name="Game Over" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 224.0
+offset_bottom = 120.0
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 64.0
+offset_top = 8.0
+offset_right = 151.0
+offset_bottom = 31.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_mq0qd")
+text = "Game Over"
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 78.0
+offset_top = 82.0
+offset_right = 143.0
+offset_bottom = 113.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("1_mq0qd")
+theme_override_font_sizes/font_size = 7
+text = "Restart"
+script = ExtResource("1_ny7vl")
+
+[node name="HighScore" type="Label" parent="."]
+layout_mode = 0
+offset_top = 56.0
+offset_right = 224.0
+offset_bottom = 79.0
+theme_override_fonts/font = ExtResource("1_mq0qd")
+theme_override_font_sizes/font_size = 5
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("3_1bvea")
+
+[node name="ScoreLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 88.0
+offset_top = 31.0
+offset_right = 128.0
+offset_bottom = 54.0
+theme_override_fonts/font = ExtResource("1_mq0qd")
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("1_blwx5")
+
+[connection signal="pressed" from="Button" to="Button" method="_on_pressed"]

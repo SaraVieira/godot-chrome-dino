@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bp1mr7hq18rak"]
+[gd_scene load_steps=16 format=3 uid="uid://bp1mr7hq18rak"]
 
 [ext_resource type="PackedScene" uid="uid://c168ayxkrmohn" path="res://player.tscn" id="1_3j85k"]
 [ext_resource type="Texture2D" uid="uid://cl8v0puy8n2f" path="res://assets/monochrome_tilemap.png" id="1_kv553"]
@@ -7,6 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://cc55gi2rohbed" path="res://game_over.tscn" id="7_c7pwd"]
 [ext_resource type="FontFile" uid="uid://dyv6pyat6m6q2" path="res://assets/m3x6.ttf" id="7_y73dm"]
 [ext_resource type="PackedScene" uid="uid://cxyv0arfj4hrr" path="res://EnemySky.tscn" id="9_bqcho"]
+[ext_resource type="AudioStream" uid="uid://cp3d5d2cnbafq" path="res://assets/bgm_action_4.mp3" id="10_u7w7u"]
+[ext_resource type="AudioStream" uid="uid://cwptfotqtp2h0" path="res://assets/lose6.ogg" id="11_d7cf2"]
 [ext_resource type="Texture2D" uid="uid://5rsjj1yh0xyq" path="res://assets/bg.png" id="13_d0wbm"]
 [ext_resource type="Script" path="res://ParallaxBackground.gd" id="13_jdlu8"]
 
@@ -1428,6 +1430,16 @@ autostart = true
 
 [node name="Game Over" parent="." instance=ExtResource("7_c7pwd")]
 visible = false
+
+[node name="Sounds" type="Node" parent="."]
+
+[node name="BackgroundMusic" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("10_u7w7u")
+autoplay = true
+
+[node name="Loose" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("11_d7cf2")
+volume_db = -8.901
 
 [connection signal="timeout" from="Control/Label/Timer" to="Player" method="_on_timer_timeout"]
 [connection signal="timeout" from="Control/Label/Timer" to="Control/Label" method="_on_timer_timeout"]

@@ -4,15 +4,20 @@ extends CharacterBody2D
 const JUMP_VELOCITY = -300.0
 var health = 1;
 
+func game_over():
+	queue_free()
+	Global.saveHighScore(Global.score)
+	Global.game_over = true
+	Global.speed = 0;
+	$"../Game Over".visible = true
+	$"../Sounds/BackgroundMusic".playing = false
+	$"../Sounds/Loose".play()
+
 func player_hit(): 
 	health = 0;
 	if !health:
-		queue_free()
-		Global.saveHighScore(Global.score)
-		Global.game_over = true
-		Global.speed = 0;
-		$"../Game Over".visible = true
-
+		game_over()
+		
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 

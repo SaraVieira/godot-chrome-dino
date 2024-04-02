@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://vqcablf54uod"]
 
 [ext_resource type="Texture2D" uid="uid://bqxv3umx8ekda" path="res://assets/cactus.png" id="1_sy26x"]
-[ext_resource type="Script" path="res://enemy.gd" id="1_ukbb0"]
+[ext_resource type="Script" path="res://scripts/enemy.gd" id="1_ukbb0"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_w7fns"]
 radius = 2.58345

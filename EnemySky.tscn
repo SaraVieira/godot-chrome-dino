@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://cxyv0arfj4hrr"]
 
-[ext_resource type="Script" path="res://enemy.gd" id="1_dgxm5"]
+[ext_resource type="Script" path="res://scripts/enemy.gd" id="1_dgxm5"]
 [ext_resource type="Texture2D" uid="uid://dy5x1dwhb85hm" path="res://assets/crouch/enemy_fly/1.png" id="2_i4bvy"]
 [ext_resource type="Texture2D" uid="uid://cjn4im3scdl2" path="res://assets/crouch/enemy_fly/2.png" id="3_vj4kj"]
 

@@ -5,6 +5,8 @@ var speed = 80;
 var game_over = false;
 var high_score = 0;
 
+
+
 func _ready():
 
 	process_mode = Node.PROCESS_MODE_ALWAYS

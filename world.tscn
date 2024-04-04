@@ -1,6 +1,7 @@
-[gd_scene load_steps=16 format=3 uid="uid://bp1mr7hq18rak"]
+[gd_scene load_steps=18 format=3 uid="uid://bp1mr7hq18rak"]
 
 [ext_resource type="PackedScene" uid="uid://c168ayxkrmohn" path="res://player.tscn" id="1_3j85k"]
+[ext_resource type="Script" path="res://scripts/world.gd" id="1_gqcvn"]
 [ext_resource type="Texture2D" uid="uid://cl8v0puy8n2f" path="res://assets/monochrome_tilemap.png" id="1_kv553"]
 [ext_resource type="PackedScene" uid="uid://vqcablf54uod" path="res://enemy.tscn" id="5_o5kol"]
 [ext_resource type="Script" path="res://scripts/score.gd" id="6_uaihj"]
@@ -9,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://cxyv0arfj4hrr" path="res://EnemySky.tscn" id="9_bqcho"]
 [ext_resource type="AudioStream" uid="uid://cp3d5d2cnbafq" path="res://assets/bgm_action_4.mp3" id="10_u7w7u"]
 [ext_resource type="AudioStream" uid="uid://cwptfotqtp2h0" path="res://assets/lose6.ogg" id="11_d7cf2"]
+[ext_resource type="Script" path="res://scripts/SpawnTimer.gd" id="13_ae70c"]
 [ext_resource type="Texture2D" uid="uid://5rsjj1yh0xyq" path="res://assets/bg.png" id="13_d0wbm"]
 [ext_resource type="Script" path="res://ParallaxBackground.gd" id="13_jdlu8"]
 
@@ -1374,6 +1376,14 @@ size = Vector2(224, 16)
 
 [node name="Node2D" type="Node2D"]
 position = Vector2(2.08165e-12, 2.08165e-12)
+script = ExtResource("1_gqcvn")
+
+[node name="EnemySky" parent="." instance=ExtResource("9_bqcho")]
+position = Vector2(322, 91)
+
+[node name="Enemy" parent="." instance=ExtResource("5_o5kol")]
+position = Vector2(231, 99)
+scale = Vector2(2, 2)
 
 [node name="Player" parent="." groups=["Player"] instance=ExtResource("1_3j85k")]
 position = Vector2(18, 103)
@@ -1393,12 +1403,6 @@ position = Vector2(2.08165e-12, 2.08165e-12)
 tile_set = SubResource("TileSet_vq4rk")
 format = 2
 layer_0/tile_data = PackedInt32Array(458752, 524288, 4, 458753, 524288, 4, 458754, 524288, 4, 458755, 524288, 4, 458756, 524288, 4, 458757, 524288, 4, 458758, 524288, 4, 458759, 524288, 4, 458760, 524288, 4, 458761, 524288, 4, 458762, 524288, 4, 458763, 524288, 4, 458764, 524288, 4, 458765, 524288, 4)
-
-[node name="EnemySky" parent="ParallaxBackground/ParallaxLayer" instance=ExtResource("9_bqcho")]
-position = Vector2(194, 90)
-
-[node name="Enemy" parent="ParallaxBackground/ParallaxLayer" instance=ExtResource("5_o5kol")]
-position = Vector2(134, 99)
 
 [node name="Ground" type="StaticBody2D" parent="."]
 
@@ -1430,6 +1434,7 @@ autostart = true
 
 [node name="Game Over" parent="." instance=ExtResource("7_c7pwd")]
 visible = false
+z_index = 4
 
 [node name="Sounds" type="Node" parent="."]
 
@@ -1441,5 +1446,10 @@ autoplay = true
 stream = ExtResource("11_d7cf2")
 volume_db = -8.901
 
+[node name="SpawnTimer" type="Timer" parent="."]
+autostart = true
+script = ExtResource("13_ae70c")
+
 [connection signal="timeout" from="UI/Label/Timer" to="Player" method="_on_timer_timeout"]
 [connection signal="timeout" from="UI/Label/Timer" to="UI/Label" method="_on_timer_timeout"]
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]
